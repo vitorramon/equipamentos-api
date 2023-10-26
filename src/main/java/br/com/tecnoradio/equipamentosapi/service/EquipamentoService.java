@@ -35,12 +35,6 @@ public class EquipamentoService {
             return new ResponseEntity<>(resposta, HttpStatus.BAD_REQUEST);
         } else {
             if (acao.equals("cadastrar")) {
-                // Verifica se já existe um equipamento com o mesmo nome no banco de dados
-                if (equipamentoRepository.existsById(equipamento.getCodigo())) {
-                    Resposta resposta = new Resposta();
-                    resposta.setMensagem("Já existe um equipamento com esse nome");
-                    return new ResponseEntity<>(resposta, HttpStatus.BAD_REQUEST);
-                }
                 return new ResponseEntity<>(equipamentoRepository.save(equipamento), HttpStatus.CREATED);
             } else {
                 // Verifica se o equipamento com o mesmo código já existe no banco de dados
